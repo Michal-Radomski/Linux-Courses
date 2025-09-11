@@ -12,7 +12,7 @@ ls -lt
 # displaying ctime
 ls -lc
  
-# displaying all timestamps
+# displaying all timestamps (The stat command prints details about files and file systems)
 stat file.txt
  
 # displaying the full timestamp
