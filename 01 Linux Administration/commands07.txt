@@ -17,3 +17,5 @@ Options:
  
 # printing ASCII chars from a binary file
 strings binary_file
+
+sudo netstat -tupan
