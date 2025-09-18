@@ -57,3 +57,40 @@ files.[1][6]
 [7](https://www.ibm.com/docs/ssw_aix_71/com.ibm.aix.cmds5/tar.htm)
 [8](https://www.freecodecamp.org/news/how-to-compress-files-in-linux-with-tar-command/)
 [9](<https://en.wikipedia.org/wiki/Tar_(computing)>) [10](https://www.tecmint.com/tar-command-examples-linux/)
+
+The options "cvfxz" in the tar command each have specific meanings:
+
+- c: Create a new archive.
+- v: Verbose mode; shows the progress/details of the files being processed.
+- f: Specifies the filename of the archive to create or extract from. This option requires you to provide the archive file
+  name immediately after it.
+- x: Extract files from an archive.
+- z: Compress or decompress the archive using gzip.
+
+Usually, these options are not used all together at once because some are for creating archives (c) and others for extracting
+(x). For example:
+
+- "cvf" means create an archive (c), be verbose (v), and specify the file (f).
+- "xvf" means extract (x), be verbose (v), and specify the file (f).
+- "czvf" means create (c), compress with gzip (z), verbose (v), and specify the file (f).
+
+The order matters — the action (create or extract) usually comes first, followed by options like verbose and file
+specification.
+
+So "cvfxz" as a sequence doesn't make typical sense in one command, but the individual letters mean the above. Common
+commands use combinations like:
+
+- `tar -cvf archive.tar files` (create archive)
+- `tar -xvf archive.tar` (extract archive)
+- `tar -czvf archive.tar.gz files` (create gzip compressed archive)
+- `tar -xzvf archive.tar.gz` (extract gzip compressed archive)
+
+This explanation helps understand what each option means and how to combine them properly in commands.[1][2][3]
+
+[1](https://www.computernetworkingnotes.com/linux-tutorials/tar-command-options-and-syntax-explained.html)
+[2](https://www.geeksforgeeks.org/linux-unix/tar-command-linux-examples/)
+[3](https://www.hostinger.com/tutorials/linux-tar-command-with-examples)
+[4](https://www.freecodecamp.org/news/tar-command-linux-tar-cvf-tar-xvf/)
+[5](https://www.ibm.com/docs/ssw_aix_71/com.ibm.aix.cmds5/tar.htm) [6](https://man7.org/linux/man-pages/man1/tar.1.html)
+[7](<https://en.wikipedia.org/wiki/Tar_(computing)>) [8](https://docs.rockylinux.org/10/guides/backup/tar/)
+[9](https://stackoverflow.com/questions/8033857/tar-archiving-that-takes-input-from-a-list-of-files)
