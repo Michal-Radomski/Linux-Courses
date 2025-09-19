@@ -8,9 +8,9 @@ g = Group
 o = Others/World
 a = all
  
-r = Read
-w = write
-x = execute
+r = Read (4)
+w = write (2)
+x = execute (1)
 - = no access
  
 # displaying the permissions (ls and stat)
