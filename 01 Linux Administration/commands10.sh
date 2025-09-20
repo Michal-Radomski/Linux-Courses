@@ -1,10 +1,76 @@
 ##########################
-## Killing processes (kill, pkill, killall)
+## Process Viewing (ps, pstree, pgrep)
 ##########################
+
+# checking if a command is shell built-in or executable file
+type rm        # => rm is /usr/bin/rm
+type cd        # => cd is a shell built-in
  
+# displaying all processes started in the current terminal
+ps
+ 
+# displaying all processes running in the system
+ps -ef 
+ps aux
+ps aux | less       # => piping to less
+ 
+# sorting by memory and piping to less
+ps aux --sort=%mem | less
+ 
+# ASCII art process tree
+ps -ef --forest
+ 
+# displaying all processes of a specific user
+ps -f -u username
+ 
+# checking if a process called sshd is running
+pgrep -l sshd
+ps -ef | grep sshd
+ 
+#displaying a hierarchical tree structure of all running processes
+pstree
+ 
+# prevent merging identical branches
+pstree -c
+
 type type
 type cp
 
+
+##########################
+## Dynamic Real-Time View of Processes(top)
+##########################
+ 
+# starting top
+top
+ 
+## top shortcuts while it's running
+h       # => getting help
+space   # => manual refresh
+d       # => setting the refresh delay in seconds
+q       # => quitting top
+u       # => display processes of a user
+m       # => changing the display for the memory
+1       # => individual statistics for each CPU
+x/y     # => highlighting the running process and the sorting column
+b       # => toggle between bold and text highlighting
+<       # => move the sorting column to the left
+>       # => move the sorting column to the right
+F       # => entering the Field Management screen 
+W       # => saving top settings
+ 
+# running top in batch mode (3 refreshes, 1 second delay)
+top -d 1 -n 3 -b > top_processes.txt
+ 
+# Interactive process viewer (top alternative)
+sudo apt update && sudo apt install htop    # => Installing htop
+htop
+
+
+##########################
+## Killing processes (kill, pkill, killall)
+##########################
+ 
 # listing all signals
 kill -l
  
