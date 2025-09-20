@@ -70,7 +70,9 @@ htop
 ##########################
 ## Killing processes (kill, pkill, killall)
 ##########################
- 
+
+pidof firefox
+
 # listing all signals
 kill -l
  
