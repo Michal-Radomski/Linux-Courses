@@ -98,4 +98,4 @@ nmap -A 192.168.0.1
 nmap -p 80 -iL hosts.txt 
  
 # exporting to out output file and disabling reverse DNS
-    nmap -n -iL hosts.txt -p 80 -oN output.txt
+nmap -n -iL hosts.txt -p 80 -oN output.txt

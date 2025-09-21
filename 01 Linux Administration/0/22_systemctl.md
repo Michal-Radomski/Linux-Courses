@@ -18,6 +18,7 @@ units, and the system state. Key options and commands include:
 - `systemctl rescue`: Switches to rescue mode for troubleshooting.
 - `systemctl mask <service>`: Disables a service completely, preventing manual start.
 - `systemctl unmask <service>`: Removes the mask to allow service start again.
+- `systemctl is-enabled mongod`
 
 These options help in managing and controlling system services and the overall system state effectively. For advanced usage,
 systemctl supports tab completion to explore all subcommands and options.
