@@ -61,7 +61,7 @@ acpi -V
  
 ## Working directly with device files (dd)
  
-# backing up the MBR (the first sector of /dev/sda)
+# backing up the MBR (the first sector of /dev/sda) (if -> input file, of -> output file)
 dd if=/dev/sda of=~/mbr.dat bs=512 count=1
  
 # restoring the MBR
