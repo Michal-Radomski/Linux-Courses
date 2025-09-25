@@ -13,7 +13,8 @@ echo $version
  
 # defining a read-only variable (constant)
 declare -r temperature=100
- 
+
+set
 # removing (unsetting) a variable
 unset version
  
