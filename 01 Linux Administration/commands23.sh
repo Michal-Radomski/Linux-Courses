@@ -1,3 +1,5 @@
+iptables --version
+
 iptables -L
 iptables -t nat -L
 iptables -vnL
