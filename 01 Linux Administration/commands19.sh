@@ -41,3 +41,5 @@ sudo systemctl mask nginx
  
 # unmasking a service
 sudo systemctl unmask nginx
+
+sudo systemctl enable --now cockpit.socket
