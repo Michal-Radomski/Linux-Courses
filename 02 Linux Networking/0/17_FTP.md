@@ -61,3 +61,54 @@ password exposure in browsing history or logs.[1][4][5]
 [7](https://hackviser.com/tactics/pentesting/services/ftp)
 [8](https://www.exavault.com/blog/how-to-access-ftp-server-from-browser)
 [9](https://docs.oracle.com/cd/E19182-01/820-6326/ghvvp/index.html)
+
+Chroot in VSFTPD is a security feature that confines (jails) an FTP user to their own home directory, preventing them from
+accessing other parts of the filesystem. This is important to protect the system from unauthorized access to sensitive files
+outside the user’s directory.
+
+### Why Enable Chroot in VSFTPD
+
+- Enhances security by restricting users to their home directory.
+- Prevents users from navigating or viewing files outside their designated FTP area.
+- Limits the damage a compromised or malicious FTP user can inflict on the system.[1][4]
+
+### How to Enable Chroot in VSFTPD
+
+1. Open the VSFTPD configuration file with a text editor, e.g.:
+   ```
+   sudo vim /etc/vsftpd/vsftpd.conf
+   ```
+2. Add or uncomment the following line to enable chroot for all local users:
+   ```
+   chroot_local_user=YES
+   ```
+3. Optionally, configure a chroot list to exclude certain users from this restriction by adding:
+   ```
+   chroot_list_enable=YES
+   chroot_list_file=/etc/vsftpd.chroot_list
+   ```
+   Then, add usernames to `/etc/vsftpd.chroot_list` who should not be jailed.
+4. Save the file and restart the vsftpd service to apply changes:
+   ```
+   sudo systemctl restart vsftpd
+   ```
+   With this setup, after login, users will be restricted to their home directories and cannot access the broader
+   filesystem.[3][4][1]
+
+### Important Notes
+
+- Enabling chroot can prevent FTP users from accessing system files, enhancing server security.
+- Be aware that chroot might interfere with some FTP commands or configurations if the environment inside the jail is not
+  properly set.
+- The setting `chroot_local_user=YES` applies to all local users unless overridden by the chroot list.
+- There are security considerations to be aware of if users have upload permissions, as chroot environments can be vulnerable
+  if not hardened correctly.[4]
+
+This feature is widely used to safely provide FTP access without exposing the entire server filesystem.
+
+[1](https://tecadmin.net/configure-chroot-jail-vsftpd/)
+[2](<https://wiki.centos.org/HowTos(2f)Chroot_Vsftpd_with_non(2d)system_users.html>)
+[3](https://www.ipserverone.info/knowledge-base/how-to-install-and-configure-vsftpd-linux/)
+[4](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-ftp-servers-vsftpd)
+[5](https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-ubuntu-20-04)
+[6](https://bbs.archlinux.org/viewtopic.php?id=279508)
