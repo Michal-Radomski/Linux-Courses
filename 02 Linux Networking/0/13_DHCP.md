@@ -63,3 +63,39 @@ network.[1][2][3][4]
 [6](https://netadminpro.pl/instalacja-serwera-dhcp-na-ubuntu-server/)
 [7](https://documentation.ubuntu.com/server/how-to/networking/install-isc-dhcp-server/)
 [8](https://www.youtube.com/watch?v=cweLHtl2s84)
+
+To do IP reservation based on MAC address in a DHCP server on Linux, you typically edit the DHCP server configuration file
+(usually dhcpd.conf) and add a host entry specifying the client's MAC address and the fixed IP address to be assigned to that
+MAC address.
+
+Here is the summarized procedure:
+
+1. Identify the MAC address of the DHCP client’s network interface.
+2. Edit the DHCP server configuration file. For Debian/Ubuntu, it's usually /etc/dhcp/dhcpd.conf; for RPM-based distros like
+   Red Hat/CentOS, it is also commonly /etc/dhcp/dhcpd.conf.
+3. Add a host declaration with a name, hardware ethernet (MAC), and fixed-address (desired IP):
+   ```
+   host clientname {
+       hardware ethernet XX:XX:XX:XX:XX:XX;
+       fixed-address 192.168.1.100;
+   }
+   ```
+4. Save the configuration file.
+5. Restart the DHCP server service to apply changes (e.g., `sudo systemctl restart isc-dhcp-server` or
+   `sudo service dhcpd restart`).
+6. Restart the network or DHCP client on the client machine to get the reserved IP.
+
+This method ensures the DHCP server always assigns the same IP address to the client based on its MAC address.
+
+This works generally for ISC DHCP server implementations on Linux distributions like Ubuntu, Debian, Fedora, CentOS, and Red
+Hat. For systems using Netplan or DHCPv6, additional configuration might be required for the client to properly identify the
+MAC address for reservations.[1][2][3][5]
+
+If desired, I can provide a detailed example configuration or instructions specific to a Linux distribution.
+
+[1](https://www.reddit.com/r/sysadmin/comments/17zld2y/iscdhcpserver6_dhcpreservation_with_macaddress/)
+[2](https://servercomputing.blogspot.com/2012/02/reserve-ip-address-in-dhcp-server-linux.html)
+[3](https://community.meraki.com/t5/Security-SD-WAN/DHCP-Reservations-not-working-for-Ubuntu/m-p/257390)
+[4](https://www.reddit.com/r/OPNsenseFirewall/comments/17dt2b5/mac_based_dhcp_reservation_before_plugging_device/)
+[5](<https://wiki.centos.org/TipsAndTricks(2f)EmulateFixedAddressByDHCP.html>)
+[6](https://www.redhat.com/en/blog/static-dynamic-ip-2)
