@@ -126,3 +126,20 @@ identity.[1][2][4]
 [6](https://stackoverflow.com/questions/14636473/linux-change-the-hostname-in-the-cli)
 [7](https://www.reddit.com/r/linuxquestions/comments/1fxj4lj/how_to_change_my_hostname_without_breaking_stuff/)
 [8](https://www.redhat.com/es/blog/configure-hostname-linux) [9](https://docs.oracle.com/en/learn/ol-hostname-locale/)
+
+In Samba configuration:
+
+- `[print$]` is a special hidden share used to store printer drivers and related files for clients. It is typically a
+  read-only share, and clients access it to download necessary printer drivers. The trailing `$` makes it a hidden share from
+  normal browsing.
+
+- `[printers]` is a special share that automatically represents all printers defined on the Samba server. It is used to share
+  printers over the network, allowing clients to send print jobs. The `[printers]` share is marked as printable, one usually
+  sets `printable = yes` to indicate it's for printing purposes.
+
+In short, `[print$]` holds printer driver files for client installation (hidden share) while `[printers]` allows actual
+printer sharing and printing over the network.[1][3]
+
+[1](https://www.oreilly.com/openbook/samba/book/ch07_01.html) [2](https://wiki.hpc.uo.edu.cu/doku.php?id=print_server)
+[3](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-samba.html)
+[4](https://www.redhat.com/en/blog/samba-file-sharing)
