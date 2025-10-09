@@ -228,3 +228,18 @@ characters can be used interchangeably for comments in the configuration file.[1
 [3](https://stackoverflow.com/questions/22738710/using-sed-to-find-and-replace-text-in-smb-conf-file)
 [4](https://www.reddit.com/r/linuxquestions/comments/k77z74/samba_vs_special_character_at_folderfile_names/)
 [5](https://wiki.archlinux.org/title/Samba)
+
+In Samba configuration, the directive "map to guest = Bad User" means that Samba will map any connection attempt from a user
+that does not exist on the Samba server to the guest account. This is helpful because Windows clients always send a username
+when connecting, and if the specified user isn't found on the server, mapping them to the guest account allows access as a
+guest rather than rejecting the connection.
+
+This setting allows non-authenticated or unknown users to be treated as guests, which is often used for public or open shares
+where authentication is not required. The guest account itself should be a valid user on the system (commonly "nobody" or
+"guest") with appropriate permissions set on the shared resources.
+
+In short, "map to guest = Bad User" instructs Samba to redirect access attempts by non-existent users to the guest user,
+facilitating guest access without login failures due to unknown usernames.[1]
+
+[1](https://bbs.archlinux.org/viewtopic.php?id=112791) [2](https://dietpi.com/forum/t/guest-access-to-samba-shares/864)
+[3](https://www.redhat.com/en/blog/samba-windows-linux)
