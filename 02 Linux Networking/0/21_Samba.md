@@ -143,3 +143,88 @@ printer sharing and printing over the network.[1][3]
 [1](https://www.oreilly.com/openbook/samba/book/ch07_01.html) [2](https://wiki.hpc.uo.edu.cu/doku.php?id=print_server)
 [3](https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-samba.html)
 [4](https://www.redhat.com/en/blog/samba-file-sharing)
+
+To configure a Samba server on Ubuntu for anonymous (guest) access and for user/password authentication, here are the key
+steps:
+
+### For Anonymous Access:
+
+1. Edit the Samba configuration file:
+   ```bash
+   sudo nano /etc/samba/smb.conf
+   ```
+2. Add a share definition for anonymous access, for example:
+   ```
+   [Anonymous]
+   path = /samba/anonymous
+   browsable = yes
+   writable = yes
+   guest ok = yes
+   read only = no
+   force user = nobody
+   ```
+3. Create the shared directory and set permissions:
+   ```bash
+   sudo mkdir -p /samba/anonymous
+   sudo chmod -R 0775 /samba/anonymous
+   sudo chown -R nobody:nogroup /samba/anonymous
+   ```
+4. Restart Samba:
+   ```bash
+   sudo service smbd restart
+   ```
+   With this setup, anyone on the network can access the anonymous share without needing a username or password.
+
+### For User/Password Authentication:
+
+1. Create or select a directory to share with authenticated access. For example:
+   ```bash
+   sudo mkdir -p /samba/secured
+   sudo chown -R someuser:sambashare /samba/secured
+   sudo chmod -R 2770 /samba/secured
+   ```
+2. Add a share section in `/etc/samba/smb.conf`:
+   ```
+   [secured]
+   path = /samba/secured
+   valid users = @smbgrp
+   guest ok = no
+   writable = yes
+   browsable = yes
+   ```
+3. Add system users to a Samba group (e.g., sambashare), and create corresponding Samba users:
+   ```bash
+   sudo groupadd sambashare  # If not already exists
+   sudo usermod -aG sambashare someuser
+   sudo smbpasswd -a someuser
+   sudo smbpasswd -e someuser
+   ```
+4. Restart Samba:
+   ```bash
+   sudo service smbd restart
+   ```
+   Users will need to enter their Samba username and password to access this share.
+
+This configuration enables a mixed environment with both anonymous and secured Samba shares on Ubuntu. The anonymous share
+allows guest access without credentials, while secured shares enforce login by username and password.
+
+If more detailed explanations or examples are needed, this can be provided.
+
+[1](https://kenfavors.com/code/configure-samba-file-sharing-in-ubuntu/)
+[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-samba-share-for-a-small-organization-on-ubuntu-16-04)
+[3](https://www.dedicatedcore.com/blog/install-samba-ubuntu/) [4](https://www.youtube.com/watch?v=lYMMr9IM0Zk)
+[5](https://www.reddit.com/r/debian/comments/1bpjrgf/anonymous_passwordless_samba_share/)
+[6](https://ubuntu.com/tutorials/install-and-configure-samba)
+[7](https://forum.linuxconfig.org/t/how-to-configure-samba-server-share-on-ubuntu-20-04-focal-fossa-linux-linuxconfig-org/4048)
+[8](https://documentation.ubuntu.com/server/how-to/samba/file-server/) [9](https://www.youtube.com/watch?v=2gW4rWhurUs)
+
+The difference between the comment characters "#" and ";" in Samba configuration files is that there is no functional
+difference; both characters are equivalent for marking comment lines. In the Samba smb.conf file, either a hash mark (#) or a
+semicolon (;) at the beginning of a line indicates that the line is a comment, and Samba will ignore that line. Both
+characters can be used interchangeably for comments in the configuration file.[1]
+
+[1](https://www.oreilly.com/openbook/samba/book/ch04_01.html)
+[2](https://forums.freebsd.org/threads/character-sets-in-the-console-and-in-samba.14626/)
+[3](https://stackoverflow.com/questions/22738710/using-sed-to-find-and-replace-text-in-smb-conf-file)
+[4](https://www.reddit.com/r/linuxquestions/comments/k77z74/samba_vs_special_character_at_folderfile_names/)
+[5](https://wiki.archlinux.org/title/Samba)
