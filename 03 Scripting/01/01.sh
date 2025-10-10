@@ -83,11 +83,12 @@ echo "------Integer Arithmetic--------"
 a=10
 b=3
 
-echo $((a + b)) # Addition: 13
-echo $((a - b)) # Subtraction: 7
-echo $((a * b)) # Multiplication: 30
-echo $((a / b)) # Division: 3
-echo $((a % b)) # Modulus: 1 (remainder)
+echo $((a + (b * 3))) # 19
+echo $((a + b))       # Addition: 13
+echo $((a - b))       # Subtraction: 7
+echo $((a * b))       # Multiplication: 30
+echo $((a / b))       # Division: 3
+echo $((a % b))       # Modulus: 1 (remainder)
 
 # 2. Using let command:
 let result=a+b
