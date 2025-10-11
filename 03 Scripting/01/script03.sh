@@ -54,3 +54,20 @@ for ((i = 1; i <= 3; i++)); do
   done
   echo
 done >>test.txt
+
+# Break and Continue
+for i in {1..5}; do
+  if [ $i -eq 3 ]; then
+    echo "Skipping number $i"
+    continue # Skip the rest of the loop for i=3 and move to next iteration
+  fi
+
+  echo "Number $i"
+
+  if [ $i -eq 4 ]; then
+    echo "Breaking out of the loop at number $i"
+    break # Exit the loop completely when i=4
+  fi
+done
+
+echo "Loop terminated"
