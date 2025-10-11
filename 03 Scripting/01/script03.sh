@@ -24,3 +24,25 @@ done
 for line in $(cat test.txt); do
   echo $line
 done
+
+# While loop
+count=1
+while [ $count -le 5 ]; do
+  echo "Count is $count"
+  ((count++))
+done
+
+# Until loop
+i=10
+until [ $i -eq 1 ]; do
+  echo "$i is not equal to 1"
+  i=$((i - 1))
+done
+echo "i value is $i"
+echo "loop terminated"
+
+i=0
+until [[ $i -eq 5 ]]; do
+  echo "$i"
+  ((i++))
+done
