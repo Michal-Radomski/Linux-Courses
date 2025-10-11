@@ -263,3 +263,32 @@ if ((j ** 2 > 10)); then
   k=$((j ** 2)) # Note the use of $(( ... )) for assignment
   echo "$k"
 fi
+
+# Case
+echo "What's your favorite fruit?"
+read fruit
+
+case "$fruit" in
+"apple")
+  echo "It's an apple!"
+  ;;
+"banana")
+  echo "It's a banana!"
+  ;;
+*)
+  echo "It's something else."
+  ;;
+esac
+
+# Exit command
+# Check if the script is run as root
+if [[ "$(whoami)" != "root" ]]; then
+  echo "Only user root can run this script."
+  exit 1 # Exit the script with status code 1 indicating an error
+fi
+
+echo "Running script as root..."
+
+# Script continues here
+
+exit 0 # Exit the script with status code 0 indicating success
