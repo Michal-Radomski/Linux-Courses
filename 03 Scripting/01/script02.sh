@@ -171,3 +171,23 @@ if [[ "$num" -gt 10 && "$num" -lt 20 ]]; then
 else
   echo "The number is not between 11 and 19."
 fi
+
+if [ "$num" -gt 10 ] && [ "$num" -lt 20 ]; then
+  echo "The number is between 11 and 19."
+else
+  echo "The number is not between 11 and 19."
+fi
+
+# Do Nothing or Null command
+if [ -e test.txt ]; then
+  : # Do nothing
+else
+  echo "Error: No test.txt file"
+fi
+
+# if ...then...else Statement
+if [ $(uname) = "Linux" ]; then
+  echo "Start Web Server"
+else
+  echo "Not Linux"
+fi
