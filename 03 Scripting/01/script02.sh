@@ -191,3 +191,37 @@ if [ $(uname) = "Linux" ]; then
 else
   echo "Not Linux"
 fi
+
+# Nested If
+# Determine the day of week (1-7, Mon-Sun)
+day=$(date +%u)
+echo $day
+
+# Get the hour in 24-hour format (00-23)
+hour=$(date +%H)
+echo $hour
+
+# Check if the day is a weekday (Mon-Fri)
+if [ $day -le 5 ]; then
+  echo "Today is a weekday."
+
+  # Nested if to check if it is morning (before noon) or afternoon/evening
+  if [ $hour -lt 12 ]; then
+    echo "It is morning."
+  else
+    echo "It is afternoon or evening."
+  fi
+
+else
+  echo "Today is the weekend!"
+fi
+
+if [ $(hostname) != "localhost" ]; then
+  if [ $(uname) = "Linux" ]; then
+    echo "Start Backup"
+  else
+    echo "Restore previous version"
+  fi
+else
+  echo "Configure application"
+fi
