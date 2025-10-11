@@ -236,3 +236,30 @@ elif [ $num -lt 100 ]; then
 else
   echo "The number is exactly 100."
 fi
+
+# Double Parentheses
+i=4
+
+# Increment the value of i by 3
+((i += 3))
+echo "i after increment: $i" # Output: 7
+
+# Arithmetic evaluation inside double parentheses - no direct output
+((4 + 8))
+echo "Exit status of ((4 + 8)): $?" # Output: 0 (true)
+
+((5 - 5))
+echo "Exit status of ((5 - 5)): $?" # Output: 1 (false)
+
+# Using double parentheses in an if statement
+if ((i > 5 && i < 10)); then
+  echo "i is between 5 and 10"
+else
+  echo "i is outside the range"
+fi
+
+j=5
+if ((j ** 2 > 10)); then
+  k=$((j ** 2)) # Note the use of $(( ... )) for assignment
+  echo "$k"
+fi
