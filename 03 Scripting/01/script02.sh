@@ -136,8 +136,38 @@ else
   echo "File is empty."
 fi
 
-# Negation: Check if a file does not exist:
+# Negation: Check if a file does not exist "!":
 file="something.txt"
 if [ ! -e "$file" ]; then
   echo "File does not exist."
+fi
+
+# Testing Logical OR (-o)
+read -p "Enter a letter: " letter
+
+if [ "$letter" = "a" -o "$letter" = "b" ]; then
+  echo "The letter is either a or b."
+else
+  echo "The letter is not a or b."
+fi
+
+if [[ "$letter" == "a" || "$letter" == "b" ]]; then
+  echo "The letter is either a or b."
+else
+  echo "The letter is not a or b."
+fi
+
+# Testing Logical AND (-a)
+read -p "Enter a number: " num
+
+if [ "$num" -gt 10 -a "$num" -lt 20 ]; then
+  echo "The number is between 11 and 19."
+else
+  echo "The number is not between 11 and 19."
+fi
+
+if [[ "$num" -gt 10 && "$num" -lt 20 ]]; then
+  echo "The number is between 11 and 19."
+else
+  echo "The number is not between 11 and 19."
 fi
