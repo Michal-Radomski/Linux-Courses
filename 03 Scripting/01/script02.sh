@@ -225,3 +225,14 @@ if [ $(hostname) != "localhost" ]; then
 else
   echo "Configure application"
 fi
+
+# Elif
+read -p "Enter a number: " num
+
+if [ $num -gt 100 ]; then
+  echo "The number is greater than 100."
+elif [ $num -lt 100 ]; then
+  echo "The number is less than 100."
+else
+  echo "The number is exactly 100."
+fi
