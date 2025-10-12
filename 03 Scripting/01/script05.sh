@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # Filename: script05.sh
-# Purpose: Testing - Functions + Arrays
+# Purpose: Testing - Functions
 # Author: MR
 # Date: 2025-10-12
 
 clear
+
+# Functions
 my_function() {
   echo "Hello, World!"
 }
@@ -28,3 +30,27 @@ function farewell {
   echo "Goodbye!"
 }
 farewell
+
+function execute_test() {
+  echo "\$1=$1"
+  echo "\$2=$2"
+}
+execute_test arg1 arg2
+
+# Return
+check_even_or_odd() {
+  local num=$1
+  if ((num % 2 == 0)); then
+    return 0 # Even number, success exit status
+  else
+    return 1 # Odd number, failure exit status
+  fi
+}
+
+number=4
+check_even_or_odd "$number"
+if [ $? -eq 0 ]; then
+  echo "$number is even"
+else
+  echo "$number is odd"
+fi
