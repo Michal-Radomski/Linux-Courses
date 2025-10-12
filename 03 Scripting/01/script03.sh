@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Filename: script02.sh
+# Filename: script03.sh
 # Purpose: Testing
 # Author: MR
 # Date: 2025-10-11
