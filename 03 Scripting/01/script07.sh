@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Filename: script07.sh
-# Purpose: Testing - Sed
+# Purpose: Testing - Sed (stream editor)
 # Author: MR
 # Date: 2025-10-12
 
