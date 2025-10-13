@@ -12,4 +12,10 @@ awk '{print}' test.txt
 
 ps -ax | awk '/systemd/ {print $5}'
 
+awk '{print $3, $4}' test.txt
+
+awk '/a/' test.txt
+
 awk -F':' '{print $1}' /etc/passwd
+
+awk -f process.awk data.txt
