@@ -9,3 +9,5 @@ Files created during Linux courses from Udemy.com
 3. [Shell Scripting/Bash](https://www.udemy.com/course/draft/705506)
 
 4. [Apache Web Server](https://www.udemy.com/course/apache-web)
+
+5. [Introduction to NGINX](https://www.udemy.com/course/nginx-crash-course)
