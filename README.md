@@ -10,4 +10,4 @@ Files created during Linux courses from Udemy.com
 
 4. [Apache Web Server](https://www.udemy.com/course/apache-web)
 
-5. [Introduction to NGINX](https://www.udemy.com/course/nginx-crash-course)
+5. [NGINX MasterClass: NGINX Server & Custom Load Balancer](https://www.udemy.com/course/-training)
