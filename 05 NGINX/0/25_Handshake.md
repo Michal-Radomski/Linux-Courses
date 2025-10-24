@@ -56,3 +56,53 @@ server, and securely establish shared keys for encrypted communication.[1][2][3]
 [7](https://www.ssl.com/article/ssl-tls-handshake-ensuring-secure-online-interactions/)
 [8](https://developer.okta.com/books/api-security/tls/how/) [9](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 [10](https://commandlinefanatic.com/cgi-bin/showarticle.cgi?article=art059)
+
+SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are cryptographic protocols designed to provide secure
+communication over a network, but TLS is the more modern and secure successor to SSL.
+
+### Key Differences between TLS and SSL:
+
+- **Protocol Version**:  
+  SSL was developed in the 1990s with versions SSL 2.0 and SSL 3.0, both now considered insecure and deprecated. TLS 1.0 was
+  based on SSL 3.0 but has evolved through multiple versions (TLS 1.1, 1.2, 1.3), with TLS 1.3 being the current standard
+  offering better security and performance.
+
+- **Encryption Algorithms**:  
+  TLS uses newer, stronger encryption algorithms like AES (Advanced Encryption Standard) and ChaCha20-Poly1305, whereas SSL
+  mainly used older, weaker ciphers like RC4, which are vulnerable to attacks.
+
+- **Handshake and Record Protocols**:  
+  TLS has an improved handshake process and record protocol. For example, TLS has encrypted alert messages and supports
+  perfect forward secrecy, enhancing security compared to SSL.
+
+- **Authentication**:  
+  TLS supports both server and client certificate authentication, whereas SSL primarily only supported server authentication.
+
+- **Performance**:  
+  TLS has optimizations reducing protocol overhead, resulting in better performance compared to SSL.
+
+- **Compatibility**:  
+  TLS is backward compatible with SSL to some extent, but modern browsers and servers have phased out SSL support entirely
+  due to its vulnerabilities.
+
+### Summary Table
+
+| Feature                | SSL                           | TLS                                   |
+| ---------------------- | ----------------------------- | ------------------------------------- |
+| Versions               | SSL 2.0, SSL 3.0 (deprecated) | TLS 1.0, 1.1, 1.2, 1.3 (current)      |
+| Security               | Less secure (vulnerable)      | More secure, with improved algorithms |
+| Encryption Algorithms  | RC4, 3DES (weak)              | AES, ChaCha20, strong ciphers         |
+| Authentication         | Server only                   | Server & client                       |
+| Handshake Process      | Older, less efficient         | Improved, more secure, faster         |
+| Message Authentication | Unencrypted alerts            | Encrypted alerts                      |
+| Usage                  | Deprecated, phased out        | Industry standard                     |
+
+In essence, TLS is the modern replacement of SSL with enhanced security, performance, and flexibility. Today, TLS is the
+protocol used to secure Internet communications, while SSL is considered obsolete and insecure.[1][2][3][5]
+
+[1](https://rublon.com/blog/tls-vs-ssl-whats-the-difference/) [2](https://www.cloudpanel.io/blog/ssl-vs-tls-certificates/)
+[3](https://www.keyfactor.com/blog/ssl-vs-tls-what-are-the-differences/)
+[4](https://aws.amazon.com/compare/the-difference-between-ssl-and-tls/) [5](https://kinsta.com/blog/tls-vs-ssl/)
+[6](https://www.geeksforgeeks.org/computer-networks/difference-between-secure-socket-layer-ssl-and-transport-layer-security-tls/)
+[7](https://www.digitalocean.com/community/conceptual-articles/tls-vs-ssl)
+[8](https://powerdmarc.com/difference-between-ssl-and-tls/)
