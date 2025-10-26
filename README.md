@@ -11,3 +11,5 @@ Files created during Linux courses from Udemy.com
 4. [Apache Web Server](https://www.udemy.com/course/apache-web)
 
 5. [NGINX MasterClass: NGINX Server & Custom Load Balancer](https://www.udemy.com/course/-training)
+
+6. [Linux Security and Hardening, The Practical Security Guide](https://www.udemy.com/course/linux-security)
