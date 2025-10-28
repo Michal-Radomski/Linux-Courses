@@ -13,3 +13,5 @@ Files created during Linux courses from Udemy.com
 5. [NGINX MasterClass: NGINX Server & Custom Load Balancer](https://www.udemy.com/course/-training)
 
 6. [Linux Security and Hardening, The Practical Security Guide](https://www.udemy.com/course/linux-security)
+
+7. [Linux Security: The Complete Iptables Firewall Guide](https://www.udemy.com/course/linux-security-the-complete-iptables-firewall-guide)
