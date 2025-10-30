@@ -66,3 +66,22 @@ iptables -A INPUT -p tcp --dport 22 -i eth1 -j ACCEPT
 
 # allowing outgoing https traffic via eth1
 iptables -A OUTPUT -p tcp --dport 443 -o eth1 -j ACCEPT
+
+#* Commands - Negating Matches
+# dropping all incoming ssh traffic accepting packets from 100.0.0.1 (management station)
+iptables -A INPUT -p tcp --dport 22 ! -s 100.0.0.1 -j DROP
+
+# dropping all outgoing https traffic excepting to www.linux.com
+iptables -A OUTPUT -p tcp --dport 443 ! -d www.linux.com -j DROP
+
+# dropping all communication excepting that with the default gateway (mac is b4:6d:83:77:85:f4)
+iptables -A INPUT -m mac ! --mac-source b4:6d:83:77:85:f4 -j DROP
+
+iptables -P INPUT ACCEPT
+
+#* Commands - Match by TCP Flags
+# dropping all incoming tcp packets that have syn set
+iptables -A INPUT -p tcp --syn -j DROP
+
+# logging outgoing traffic that has syn and ack set
+iptables -A OUTPUT -p tcp --tcp-flags syn,ack,rst,fin syn,ack -j LOG
