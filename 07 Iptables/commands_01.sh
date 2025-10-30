@@ -7,8 +7,8 @@ iptables -Lvn
 iptables -F
 iptables -t nat -F
 
-iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
-iptables -A OUTPUT -p icmp --icmp-type echo-reply -j DROP
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP #* Block ping
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j DROP  #* Block ping
 
 # -A -> appends a rule at the end of the CHAIN
 iptables -A OUTPUT -p tcp --dport 443 -j DROP
