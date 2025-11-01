@@ -50,10 +50,30 @@ nmap -O 192.168.0.1
 
 # https://nmap.org/book/performance-timing-templates.html
 
-# -T paranoid|sneaky|polite|normal|aggressive|insane (Set a timing template)
+#* Timing Templates (-T) paranoid|sneaky|polite|normal|aggressive|insane (Set a timing template)
 # These templates allow the user to specify how aggressive they wish to be, while leaving Nmap to pick the exact
 # timing values. The templates also make some minor speed adjustments for which fine-grained control options do
 # not currently exist.
 
 # # -A OS and service detection with faster execution
 # nmap -A -T aggressive cloudflare.com
+
+#- Script - REJECT and LOG Targets
+#!/bin/bash
+
+iptables -F
+
+## See all REJECT packets: iptables -j REJECT --help
+
+# logging the first packet (tcp syn set) of any incoming ssh connection
+# use the prefix: ###ssh:
+iptables -A INPUT -p tcp --syn --dport 22 -j LOG --log-prefix="##ssh:" --log-level info
+
+# Then reject any incoming ssh packet and send back a tcp-reset to the source
+iptables -A INPUT -p tcp --dport 22 -j REJECT --reject-with tcp-reset
+
+# logging only 10 incoming ICMP ping packets per minute
+iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 10/minute -j LOG --log-prefix="ping probe:"
+
+# reject all incoming ICMP ping packets that are not coming from 10.0.0.1 (management station)
+iptables -A INPUT ! -s 10.0.0.1 -p icmp --icmp-type echo-request -j REJECT --reject-with admin-prohib
