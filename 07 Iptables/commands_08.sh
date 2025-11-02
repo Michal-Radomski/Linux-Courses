@@ -33,7 +33,7 @@ iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
 #create a new chain named ACCEPTED_MAC
 iptables -N ACCEPTED_MAC
 
-#add rules to the user defined-chain
+# add rules to the user defined-chain
 iptables -A ACCEPTED_MAC -m mac --mac-source B8:81:98:22:C7:6B -j ACCEPT
 iptables -A ACCEPTED_MAC -m mac --mac-source B8:81:98:22:C6:7C -j ACCEPT
 iptables -A ACCEPTED_MAC -m mac --mac-source B8:81:98:22:23:AB -j ACCEPT
