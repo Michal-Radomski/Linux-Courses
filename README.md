@@ -15,3 +15,5 @@ Files created during Linux courses from Udemy.com
 6. [Linux Security and Hardening, The Practical Security Guide](https://www.udemy.com/course/linux-security)
 
 7. [Linux Security: The Complete Iptables Firewall Guide](https://www.udemy.com/course/linux-security-the-complete-iptables-firewall-guide)
+
+8. [Kali Linux Certification Course: Hacking with Kali Linux](https://www.udemy.com/course/kali-linux-certification-course-hacking-with-kali-linux)
