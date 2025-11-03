@@ -85,3 +85,10 @@ if [[ $age -gt 0 && $age -le 120 ]]; then
 else
   echo "Invalid age entered."
 fi
+
+date
+# Command Substitution
+now=$(date)
+echo $now
+users=$(who)
+echo $users
