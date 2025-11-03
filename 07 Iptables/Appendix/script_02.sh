@@ -62,3 +62,37 @@ case $num in
   echo "Invalid option. Please enter a number between 1 and 5."
   ;;
 esac
+
+# Define a simple function
+function greet() {
+  echo "Hello, World!"
+}
+
+# Call the function
+greet
+
+# Function that takes an argument and uses a local variable
+greet() {
+  local name=$1
+  echo "Hello, $name!"
+}
+
+# Call the function with an argument
+greet "Alice"
+
+add() {
+  local sum=$(($1 + $2))
+  echo $sum
+}
+
+result=$(add 5 3)
+echo "The sum is $result"
+
+select fruit in apple orange banana grapefruit; do
+  if [ -n "$fruit" ]; then
+    echo "You selected: $fruit"
+    break
+  else
+    echo "Invalid selection. Please try again."
+  fi
+done
